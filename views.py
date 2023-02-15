@@ -21,7 +21,7 @@ def perform_query():
     result = None
     for query in validated_data['queries']:
         result = convert_query(
-            cdm=query['cmd'],
+            cmd=query['cmd'],
             value=query['value'],
             file_name=validated_data['file_name'],
             data=result,
