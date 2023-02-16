@@ -1,4 +1,4 @@
-from marshmallow import Schema, ValidationError, fields, validates_schema
+from marshmallow import Schema, fields
 
 VALID_CMD_COMMANDS = ('filter', 'unique', 'map', 'limit', 'sort', 'regex')
 
