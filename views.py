@@ -2,10 +2,8 @@ from typing import Tuple, Union, Dict, List
 
 from flask import Flask, Blueprint, request, jsonify, Response
 from marshmallow import ValidationError
-from sqlalchemy import text
 
 from converter import convert_query
-from db import db
 from models import BatchRequestSchema
 
 main_bp = Blueprint('main', __name__)
@@ -35,14 +33,3 @@ def perform_query() -> Union[Response, Tuple[Response, int]]:
 @main_bp.route('/ping', methods=['GET'])
 def ping():
     return 'pong'
-
-
-@main_bp.route('/test_db', methods=['GET'])
-def test_db():
-    result = db.session.execute(
-        text('''
-        SELECT 1; 
-        '''
-             )
-    ).scalar()
-    return jsonify({'result': result})

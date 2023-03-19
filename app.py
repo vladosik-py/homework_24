@@ -1,12 +1,11 @@
 from flask import Flask
 
-from db import db
+import config
 from views import main_bp
 
 
-def create_app(config) -> Flask:
+def create_app() -> Flask:
     app = Flask(__name__)
     app.config.from_object(config)
-    db.init_app(app)
     app.register_blueprint(main_bp)
     return app
